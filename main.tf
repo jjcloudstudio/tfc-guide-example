@@ -34,7 +34,7 @@ resource "aws_instance" "ubuntu_test" {
 }
 
 resource "aws_security_group" "ubuntu_test" {
-  name        = ubuntu_test
+  name        = "ubuntu_test"
   description = "Allow http and https in. Allow everything out"
 
   vpc_id      = data.aws_vpc.default.id
