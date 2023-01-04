@@ -60,7 +60,7 @@ resource "aws_security_group_rule" "ubuntu_test_https_in" {
   security_group_id = aws.security_group.ubuntu_test.id
 }
 
-resource "aws_security_group_rule" "ubuntu_test_http_in" {
+resource "aws_security_group_rule" "ubuntu_test_everything_out" {
   type        = ingree
   from_port   = 0
   to_port     = 0
