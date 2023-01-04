@@ -26,7 +26,7 @@ resource "aws_instance" "ubuntu_test" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
 
-  vpc_security_groups_ids =[aws_security_group.ubuntu_test.id]
+  vpc_security_group_ids =[aws_security_group.ubuntu_test.id]
 
   tags = {
     Name = var.instance_name
@@ -45,7 +45,7 @@ resource "aws_security_group_rule" "ubuntu_test_http_in" {
   from_port   = 80
   to_port     = 80
   protocol    = "tcp"
-  cide_blocks = ["0.0.0.0/0"]
+  cidr_blocks = ["0.0.0.0/0"]
 
   security_group_id = aws_security_group.ubuntu_test.id
 }
@@ -55,7 +55,7 @@ resource "aws_security_group_rule" "ubuntu_test_https_in" {
   from_port   = 443
   to_port     = 443
   protocol    = "tcp"
-  cide_blocks = ["0.0.0.0/0"]
+  cidr_blocks = ["0.0.0.0/0"]
 
   security_group_id = aws_security_group.ubuntu_test.id
 }
@@ -65,7 +65,7 @@ resource "aws_security_group_rule" "ubuntu_test_everything_out" {
   from_port   = 0
   to_port     = 0
   protocol    = "-1"
-  cide_blocks = ["0.0.0.0/0"]
+  cidr_blocks = ["0.0.0.0/0"]
 
   security_group_id = aws_security_group.ubuntu_test.id
 }
