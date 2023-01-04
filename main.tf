@@ -47,7 +47,7 @@ resource "aws_security_group_rule" "ubuntu_test_http_in" {
   protocol    = "tcp"
   cide_blocks = ["0.0.0.0/0"]
 
-  security_group_id = aws.security_group.ubuntu_test.id
+  security_group_id = aws_security_group.ubuntu_test.id
 }
 
 resource "aws_security_group_rule" "ubuntu_test_https_in" {
@@ -57,7 +57,7 @@ resource "aws_security_group_rule" "ubuntu_test_https_in" {
   protocol    = "tcp"
   cide_blocks = ["0.0.0.0/0"]
 
-  security_group_id = aws.security_group.ubuntu_test.id
+  security_group_id = aws_security_group.ubuntu_test.id
 }
 
 resource "aws_security_group_rule" "ubuntu_test_everything_out" {
@@ -67,5 +67,5 @@ resource "aws_security_group_rule" "ubuntu_test_everything_out" {
   protocol    = "-1"
   cide_blocks = ["0.0.0.0/0"]
 
-  security_group_id = aws.security_group.ubuntu_test.id
+  security_group_id = aws_security_group.ubuntu_test.id
 }
