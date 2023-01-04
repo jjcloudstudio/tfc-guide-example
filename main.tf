@@ -29,14 +29,16 @@ resource "aws_instance" "ubuntu_test" {
   vpc_security_group_ids =[aws_security_group.ubuntu_test.id]
 
   tags = {
-    Name = var.instance_name
+    Name = "Learning Terraform"
   }
 }
 
 resource "aws_security_group" "ubuntu_test" {
   name        = "ubuntu_test"
   description = "Allow http and https in. Allow everything out"
-
+  tags = {
+    Terraform = "true"
+  }
   vpc_id      = data.aws_vpc.default.id
 }
 
