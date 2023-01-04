@@ -69,3 +69,4 @@ resource "aws_security_group_rule" "ubuntu_test_everything_out" {
 
   security_group_id = aws_security_group.ubuntu_test.id
 }
+
