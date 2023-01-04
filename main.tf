@@ -41,7 +41,7 @@ resource "aws_security_group" "ubuntu_test" {
 }
 
 resource "aws_security_group_rule" "ubuntu_test_http_in" {
-  type        = ingree
+  type        = ingress
   from_port   = 80
   to_port     = 80
   protocol    = "tcp"
@@ -51,7 +51,7 @@ resource "aws_security_group_rule" "ubuntu_test_http_in" {
 }
 
 resource "aws_security_group_rule" "ubuntu_test_https_in" {
-  type        = ingree
+  type        = ingress
   from_port   = 443
   to_port     = 443
   protocol    = "tcp"
