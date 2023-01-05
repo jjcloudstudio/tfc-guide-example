@@ -1,8 +1,7 @@
 output "instance_ami" {
-  value = aws_instance.ubuntu_test.ami
+  value = aws_instance.blog.ami
 }
 
 output "instance_arn" {
-  value = aws_instance.ubuntu_test.arn
+  value = aws_instance.blog.arn
 }
-
