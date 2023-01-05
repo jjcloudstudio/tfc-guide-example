@@ -23,7 +23,7 @@ data "aws_vpc" "default" {
 }
 
 resource "aws_instance" "ubuntu_test" {
-  ami           = data.aws_ami.ubuntu.id
+  ami           = data.aws_ami.ubuntu_test.id
   instance_type = var.instance_type
 
   vpc_security_group_ids =[aws_security_group.ubuntu_test.id]
