@@ -2,7 +2,7 @@ provider "aws" {
   region = var.region
 }
 
-data "aws_ami" "app_ami" {
+data "aws_ami" "ubuntu" {
   most_recent = true
 
   filter {
@@ -23,22 +23,20 @@ data "aws_vpc" "default" {
 }
 
 resource "aws_instance" "ubuntu_test" {
-  ami           = data.aws_ami.ubuntu_test.id
+  ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
 
   vpc_security_group_ids =[aws_security_group.ubuntu_test.id]
 
   tags = {
-    Name = "Learning Terraform"
+    Name = var.instance_name
   }
 }
 
 resource "aws_security_group" "ubuntu_test" {
   name        = "ubuntu_test"
   description = "Allow http and https in. Allow everything out"
-  tags = {
-    Terraform = "true"
-  }
+
   vpc_id      = data.aws_vpc.default.id
 }
 
@@ -71,4 +69,3 @@ resource "aws_security_group_rule" "ubuntu_test_everything_out" {
 
   security_group_id = aws_security_group.ubuntu_test.id
 }
-
