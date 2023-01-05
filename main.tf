@@ -26,7 +26,7 @@ resource "aws_instance" "ubuntu_test" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
 
-  vpc_security_group_ids =[aws_security_group.ubuntu_test.id]y
+  vpc_security_group_ids =[aws_security_group.ubuntu_test.id]
 
   tags = {
     Name = "Learning Terraform"
