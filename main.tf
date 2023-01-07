@@ -26,11 +26,26 @@ resource "aws_instance" "ubuntu_test" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
 
-  vpc_security_group_ids =[aws_security_group.ubuntu_test.id]
+  vpc_security_group_ids =[module.ubuntu_test_sg.security_group_id]
 
   tags = {
     Name = var.instance_name
   }
+}
+
+
+module "ubuntu_test_sg" {
+  source = "terraform-aws-modules/aws_security_group/aws"
+  version = "4.13.0"
+  name = "ubuntu_test_sg"
+
+  vpc_id = data.aws_vpc.default.id
+
+  ingress_rules   = ["http-80-tcp", "https-443-tcp"]
+  ingress_cidr_blocks = ["0.0.0.0/0"]
+
+  egress_rules   = ["all-all"]
+  egress_cidr_blocks = ["0.0.0.0/0"]
 }
 
 resource "aws_security_group" "ubuntu_test" {
